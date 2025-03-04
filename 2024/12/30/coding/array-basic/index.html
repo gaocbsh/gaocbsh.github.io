@@ -1,0 +1,195 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>刷题——数组基础及例题分析 | gaocbsh</title><meta name="author" content="参商"><meta name="copyright" content="参商"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="基础知识数组是存放在连续内存空间上的相同类型数据的集合,数组下标都是从0开始的。所以我们在删除或者增添元素的时候，就难免要移动其他元素的地址。 如果使用C++的话，要注意vector 和..."><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "刷题——数组基础及例题分析",
+  "url": "http://gaocbsh.github.io/2024/12/30/coding/array-basic/",
+  "image": "http://gaocbsh.github.io/img/unhappy.jpg",
+  "datePublished": "2024-12-30T06:04:32.000Z",
+  "dateModified": "2025-02-19T09:09:10.936Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "参商",
+      "url": "http://gaocbsh.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://gaocbsh.github.io/2024/12/30/coding/array-basic/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 参商","link":"链接: ","source":"来源: gaocbsh","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '刷题——数组基础及例题分析',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">8</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/background.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">gaocbsh</span></a><a class="nav-page-title" href="/"><span class="site-name">刷题——数组基础及例题分析</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">刷题——数组基础及例题分析</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-12-30T06:04:32.000Z" title="发表于 2024-12-30 14:04:32">2024-12-30</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-02-19T09:09:10.936Z" title="更新于 2025-02-19 17:09:10">2025-02-19</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h1><p>数组是存放在连续内存空间上的相同类型数据的集合,数组下标都是从0开始的。所以我们在删除或者增添元素的时候，就难免要移动其他元素的地址。</p>
+<p>如果使用C++的话，要注意vector 和 array的区别，vector的底层实现是array，严格来讲vector是容器，不是数组。</p>
+<p>数组的元素是不能删的，只能覆盖。</p>
+<p>c++中的二维数组中的地址空间是连续的，前一行与后一行首尾相连。</p>
+<h2 id="例题解析"><a href="#例题解析" class="headerlink" title="例题解析"></a>例题解析</h2><h3 id="二分查找——循环不变量原则"><a href="#二分查找——循环不变量原则" class="headerlink" title="二分查找——循环不变量原则"></a>二分查找——循环不变量原则</h3><p>前提：</p>
+<ul>
+<li>有序数组</li>
+<li>数组中无重复元素</li>
+</ul>
+<p>核心思想：找对区间边界，明确区间的定义（循环不变量，左闭右闭或左闭右开）</p>
+<ul>
+<li>while(left &lt;&#x3D; right): right &#x3D; middle - 1; if(nums[middle]&gt;target)</li>
+<li>while(left &lt; right): right &#x3D; middle - 1; if(nums[middle] &gt; target)</li>
+</ul>
+<h3 id="移除元素——双指针"><a href="#移除元素——双指针" class="headerlink" title="移除元素——双指针"></a>移除元素——双指针</h3><p>不要使用额外的数组空间，你必须仅使用 O(1) 额外空间并原地修改输入数组。<br>要知道数组的元素在内存地址中是连续的，不能单独删除数组中的某个元素，只能覆盖。</p>
+<p>方法1：双重for循环，暴力解法<br>一个for循环遍历数组元素 ，第二个for循环更新数组，数组大小不断变化。</p>
+<p>方法2：双指针。在一层for遍历中，一个快指针用于遍历寻找目标值，一个慢指针用于更新数组。</p>
+<h3 id="有序数组的平方——双指针"><a href="#有序数组的平方——双指针" class="headerlink" title="有序数组的平方——双指针"></a>有序数组的平方——双指针</h3><p>非递减顺序 排序的整数数组 nums，返回 每个数字的平方 组成的新数组，要求也按 非递减顺序 排序。</p>
+<p>分析：原始数组为非递减顺序，则该数组元素的绝对值的大小顺序为，中间位置的元素最小，向两边依次增大。<br>因此可以使用双指针，从数组的两端向中间遍历，比较两端值的大小。新数组从末尾向始端更新数组值。<br>此时可以考虑双指针法了，i指向起始位置，j指向终止位置。</p>
+<p>定义一个新数组result，和A数组一样的大小，让k指向result数组终止位置。</p>
+<p>如果<code>A[i] * A[i] &lt; A[j] * A[j]</code> ，那么<code>result[k--] = A[j] * A[j];</code> 。</p>
+<p>如果<code>A[i] * A[i] &gt;= A[j] * A[j]</code> ，那么<code>result[k--] = A[i] * A[i];</code> 。</p>
+<p>在循环过程中，控制i&lt;&#x3D;j。</p>
+<h3 id="长度最小的子数组——滑动窗口"><a href="#长度最小的子数组——滑动窗口" class="headerlink" title="长度最小的子数组——滑动窗口"></a>长度最小的子数组——滑动窗口</h3><p>给定一个含有 n 个正整数的数组和一个正整数 s ，找出该数组中满足其和 ≥ s 的长度最小的 连续 子数组，并返回其长度。如果不存在符合条件的子数组，返回 0。</p>
+<p>所谓滑动窗口，就是不断的调节子序列的起始位置和终止位置，从而得出我们要想的结果。<br>主要确定如下三点：</p>
+<ul>
+<li>窗口内是什么？ ：满足其和 ≥ s 的长度最小的 连续 子数组。</li>
+<li>如何移动窗口的起始位置？ ：如果当前窗口的值大于等于s了，窗口就要向前移动了（也就是该缩小了）。</li>
+<li>如何移动窗口的结束位置？ ：窗口的结束位置就是遍历数组的指针，也就是for循环里的索引。</li>
+</ul>
+<p>滑动窗口的精妙之处在于根据当前子序列和大小的情况，不断调节子序列的起始位置。从而将O(n^2)暴力解法降为O(n)。</p>
+<h3 id="螺旋矩阵II——循环不变量"><a href="#螺旋矩阵II——循环不变量" class="headerlink" title="螺旋矩阵II——循环不变量"></a>螺旋矩阵II——循环不变量</h3><p>给定一个正整数n，生成一个包含 1 到 n^2 所有元素，且元素按顺时针顺序螺旋排列的正方形矩阵。</p>
+<p>模拟顺时针画矩阵的过程:</p>
+<ul>
+<li>填充上行从左到右 </li>
+<li>填充右列从上到下 </li>
+<li>填充下行从右到左 </li>
+<li>填充左列从下到上</li>
+</ul>
+<p>循环<strong>按照左闭右开的原则</strong>，由于是长宽为n的正方形，因此循环的圈数为n&#x2F;2，每一个循环顺时针填充一圈，位移向里移动一位。</p>
+<h3 id="区间和——前缀和"><a href="#区间和——前缀和" class="headerlink" title="区间和——前缀和"></a>区间和——前缀和</h3><p>给定一个整数数组 Array，请计算该数组在每个指定区间内元素的总和。</p>
+<p>前缀和的思想是重复利用计算过的子数组之和，从而降低区间查询需要累加计算的次数。</p>
+<p><code>p[1] = vec[0] + vec[1];</code></p>
+<p><code>p[5] = vec[0] + vec[1] + vec[2] + vec[3] + vec[4] + vec[5];</code></p>
+<p><code>p[5] - p[1] = vec[2] + vec[3] + vec[4] + vec[5];</code>为下标 2 到下标 5 之间的累加和。</p>
+<h3 id="开发商购买土地——前缀和"><a href="#开发商购买土地——前缀和" class="headerlink" title="开发商购买土地——前缀和"></a>开发商购买土地——前缀和</h3><p>由于城市规划的限制，只允许将区域按横向或纵向划分成两个子区域，而且每个子区域都必须包含一个或多个区块。<br>按照此种方式，输入矩阵只能按照纵向或横向切割，即前x行（列）分给A，后n-x行（m-x列）分给B。<br>因此结合前缀和的思想，计算行和列的前缀和，分别计算按行分和按列分的价值最小值，为最终结果。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://gaocbsh.github.io">参商</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://gaocbsh.github.io/2024/12/30/coding/array-basic/">http://gaocbsh.github.io/2024/12/30/coding/array-basic/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://gaocbsh.github.io" target="_blank">gaocbsh</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/coding/">coding</a></div><div class="post-share"><div class="social-share" data-image="/img/unhappy.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2024/12/30/linux/linux%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/" title="linux常用指令.md"><img class="cover" src="/img/unhappy.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">linux常用指令.md</div></div><div class="info-2"><div class="info-item-1">系统源镜像修改系统源镜像设置文件存储为值在/etc/apt/source.list 文件中和/etc/apt/source.list.d/目录下。 进入/etc/apt目录，编辑source.list需要使用sudo指令。执行sudo nano source.list。将不需要的镜像删掉或使用#注释掉。  </div></div></div></a><a class="pagination-related" href="/2025/01/06/coding/linkedList/" title="刷题——链表基础及例题分析"><img class="cover" src="/img/unhappy.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">刷题——链表基础及例题分析</div></div><div class="info-2"><div class="info-item-1">基础知识链表是一种通过指针串联在一起的线性结构，每个节点由两部分组成，一个是数据域，一个是指针域（存放指向下一个节点的指针），最后一个节点的指针指向null(空指针的意思)。 链表的入口节点，也就是链表的头节点，称为head。 链表的类型：  单链表：基本定义就是单链表。 双链表：在单链表的基础上，增加一个指针域，一个指向后一个节点，一个指向前一个节点。既可以向前查询也可以向后查询。 循环链表：首尾相连，可以解决约瑟夫环的问题。  链表的存储方式：链表在内存中不是连续存放的，通过指针域的指针链接在内存中的各个节点。分配机制取决于操作系统的内存管理。 链表的定义： 123456//单链表struct ListNode &#123;    int val;    ListNode *next;    ListNode(int x): val(x), next(null)&#123;&#125;&#125; C++默认生成一个构造函数,但是这个构造函数不会初始化任何成员变量。因此使用默认构造函数的话，在初始化时不能直接给变量赋值。 123456//默认构造函数ListNode*...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">参商</div><div class="author-info-description">Go hiking</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">8</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/gaocbsh"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/gaocbsh" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:gaocbsh4794@163.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">于道各努力，千里自同风</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">1.</span> <span class="toc-text">基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%8B%E9%A2%98%E8%A7%A3%E6%9E%90"><span class="toc-number">1.1.</span> <span class="toc-text">例题解析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E2%80%94%E2%80%94%E5%BE%AA%E7%8E%AF%E4%B8%8D%E5%8F%98%E9%87%8F%E5%8E%9F%E5%88%99"><span class="toc-number">1.1.1.</span> <span class="toc-text">二分查找——循环不变量原则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0%E2%80%94%E2%80%94%E5%8F%8C%E6%8C%87%E9%92%88"><span class="toc-number">1.1.2.</span> <span class="toc-text">移除元素——双指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E5%B9%B3%E6%96%B9%E2%80%94%E2%80%94%E5%8F%8C%E6%8C%87%E9%92%88"><span class="toc-number">1.1.3.</span> <span class="toc-text">有序数组的平方——双指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%95%BF%E5%BA%A6%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84%E2%80%94%E2%80%94%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3"><span class="toc-number">1.1.4.</span> <span class="toc-text">长度最小的子数组——滑动窗口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5II%E2%80%94%E2%80%94%E5%BE%AA%E7%8E%AF%E4%B8%8D%E5%8F%98%E9%87%8F"><span class="toc-number">1.1.5.</span> <span class="toc-text">螺旋矩阵II——循环不变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%BA%E9%97%B4%E5%92%8C%E2%80%94%E2%80%94%E5%89%8D%E7%BC%80%E5%92%8C"><span class="toc-number">1.1.6.</span> <span class="toc-text">区间和——前缀和</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E5%95%86%E8%B4%AD%E4%B9%B0%E5%9C%9F%E5%9C%B0%E2%80%94%E2%80%94%E5%89%8D%E7%BC%80%E5%92%8C"><span class="toc-number">1.1.7.</span> <span class="toc-text">开发商购买土地——前缀和</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/02/19/linux/system/" title="Linux to go硬盘安装ubuntu双系统实践"><img src="/img/unhappy.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux to go硬盘安装ubuntu双系统实践"/></a><div class="content"><a class="title" href="/2025/02/19/linux/system/" title="Linux to go硬盘安装ubuntu双系统实践">Linux to go硬盘安装ubuntu双系统实践</a><time datetime="2025-02-19T11:26:32.000Z" title="发表于 2025-02-19 19:26:32">2025-02-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/02/19/hello-world/" title="Hello World"><img src="/img/unhappy.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/2025/02/19/hello-world/" title="Hello World">Hello World</a><time datetime="2025-02-19T07:39:37.533Z" title="发表于 2025-02-19 15:39:37">2025-02-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/01/06/coding/linkedList/" title="刷题——链表基础及例题分析"><img src="/img/unhappy.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="刷题——链表基础及例题分析"/></a><div class="content"><a class="title" href="/2025/01/06/coding/linkedList/" title="刷题——链表基础及例题分析">刷题——链表基础及例题分析</a><time datetime="2025-01-06T12:57:28.000Z" title="发表于 2025-01-06 20:57:28">2025-01-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/12/30/coding/array-basic/" title="刷题——数组基础及例题分析"><img src="/img/unhappy.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="刷题——数组基础及例题分析"/></a><div class="content"><a class="title" href="/2024/12/30/coding/array-basic/" title="刷题——数组基础及例题分析">刷题——数组基础及例题分析</a><time datetime="2024-12-30T06:04:32.000Z" title="发表于 2024-12-30 14:04:32">2024-12-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/12/30/linux/linux%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/" title="linux常用指令.md"><img src="/img/unhappy.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="linux常用指令.md"/></a><div class="content"><a class="title" href="/2024/12/30/linux/linux%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/" title="linux常用指令.md">linux常用指令.md</a><time datetime="2024-12-30T05:04:43.000Z" title="发表于 2024-12-30 13:04:43">2024-12-30</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By 参商</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 6.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.3</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

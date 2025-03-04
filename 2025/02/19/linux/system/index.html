@@ -1,0 +1,181 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Linux to go硬盘安装ubuntu双系统实践 | gaocbsh</title><meta name="author" content="参商"><meta name="copyright" content="参商"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content=" 参考资料： https://blog.csdn.net/2301_81212168/article/details/134896613..."><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Linux to go硬盘安装ubuntu双系统实践",
+  "url": "http://gaocbsh.github.io/2025/02/19/linux/system/",
+  "image": "http://gaocbsh.github.io/img/unhappy.jpg",
+  "datePublished": "2025-02-19T11:26:32.000Z",
+  "dateModified": "2025-03-03T10:13:46.204Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "参商",
+      "url": "http://gaocbsh.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://gaocbsh.github.io/2025/02/19/linux/system/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 参商","link":"链接: ","source":"来源: gaocbsh","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Linux to go硬盘安装ubuntu双系统实践',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">8</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/background.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">gaocbsh</span></a><a class="nav-page-title" href="/"><span class="site-name">Linux to go硬盘安装ubuntu双系统实践</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Linux to go硬盘安装ubuntu双系统实践</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-02-19T11:26:32.000Z" title="发表于 2025-02-19 19:26:32">2025-02-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-03-03T10:13:46.204Z" title="更新于 2025-03-03 18:13:46">2025-03-03</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><blockquote>
+<p>参考资料：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/2301_81212168/article/details/134896613">https://blog.csdn.net/2301_81212168/article/details/134896613</a> </p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_64545111/article/details/136131918">https://blog.csdn.net/m0_64545111/article/details/136131918</a></p>
+</blockquote>
+<h1 id="工具准备"><a href="#工具准备" class="headerlink" title="工具准备"></a>工具准备</h1><ol>
+<li>用于制作启动盘的U盘（32G，推荐8GB以上）。</li>
+<li>用于安装系统的移动固体硬盘（1TB）。 </li>
+<li>Rufus软件用于制作启动盘 。</li>
+<li>DisGenius软件，用于磁盘分区。</li>
+</ol>
+<h1 id="制作系统启动盘"><a href="#制作系统启动盘" class="headerlink" title="制作系统启动盘"></a>制作系统启动盘</h1><p>首先插入U盘，在<a target="_blank" rel="noopener" href="https://cn.ubuntu.com/download/desktop">Ubuntu官网</a>下载镜像.iso文件，我安装的Ubuntu22.04 LTS。使用Rufus将镜像文件写入U盘。</p>
+<h1 id="磁盘分区"><a href="#磁盘分区" class="headerlink" title="磁盘分区"></a>磁盘分区</h1><p>插入硬盘，在DiskGenius软件中进行磁盘分区。首先需要将硬盘分区表类型转化为GUID格式，右键准备安装系统的硬盘，点击“转换分区表类型为GUID格式”。<br>然后根据参考资料中的<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_64545111/article/details/136131918">磁盘分区方法</a>进行分区。内存分区需要和你电脑配置的内存分区大小一致。</p>
+<h1 id="安装系统"><a href="#安装系统" class="headerlink" title="安装系统"></a>安装系统</h1><p>将U盘和硬盘都插入电脑，按F2进入BIOS启动页面（不同电脑可能不一样），发现在启动项中没有参考资料中所说的“Linpus lite”或者“ubuntu”启动U盘标识，只有“EFI（硬盘名称）”。点击此启动项进入ubuntu系统安装。</p>
+<p>安装时基本上根据自己的需要进行选择，在选择安装类型步骤时，一定要选择“其他选项”，进行分区挂载。注意要将安装启动引导器的设备选择为移动硬盘的EFI区。<br><img src="/img.png" alt="img.png"></p>
+<p>完成之后点击“现在安装”，等待安装完成；全部安装完成后进入ubuntu系统界面。</p>
+<h1 id="将系统启动引导程序迁移到移动硬盘上"><a href="#将系统启动引导程序迁移到移动硬盘上" class="headerlink" title="将系统启动引导程序迁移到移动硬盘上"></a>将系统启动引导程序迁移到移动硬盘上</h1><p>将启动引导程序迁移到移动硬盘上，就可以在电脑启动时进入硬盘的启动引导，而不是按F12进入BIOS进行系统启动选择。进入Ubuntu系统后，连接网络，打开终端输入下面的指令安装boot-repair软件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-add-repository ppa:yannubuntu/boot-repair</span><br><span class="line">sudo apt update</span><br><span class="line">sudo apt install boot-repair</span><br></pre></td></tr></table></figure>
+<p>安装完成后，输入命令运行该软件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">boot-repair</span><br></pre></td></tr></table></figure>
+<p>选择“Recommended repair”，等待程序运行完成即可。</p>
+<h1 id="后续问题"><a href="#后续问题" class="headerlink" title="后续问题"></a>后续问题</h1><p>在以上步骤完成后，linux to go已基本完成。但是重新启动ubuntu会发现启动会卡在ubuntu启动页面，一直进不去桌面。其实是系统显卡驱动没有正确安装。<br>在启动选择ubuntu启动时，编辑ubuntu grub。在”quiet splash”后添加”nomodeset”,意为可以告诉内核，系统启动过程中，暂时不运行图像驱动程序。但是在每次启动时都需要手动更改grub文件有些繁琐。</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/CaptainHailong/article/details/79765579">https://blog.csdn.net/CaptainHailong/article/details/79765579</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/dair6/article/details/121151562">https://blog.csdn.net/dair6/article/details/121151562</a></p>
+</blockquote>
+<p>因此可以在进入系统后编辑grub文件，在terminal中输入“sudo nano &#x2F;etc&#x2F;default&#x2F;grub”，同样在splash后面加上nomodeset。:wq保存后，输入”sudo update-grub”。之后系统就可以正常启动了。</p>
+<p>但此时发现，ubuntu系统亮度等无法调节，设置中系统显卡信息显示为llvmpipe llvm 12.0.0 256 bits,本机的显卡并未被识别。按照网上大多数教程在软件与更新——》附加驱动中查找驱动，但是附加驱动中可安装选项为空。</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.intel.cn/content/www/cn/zh/support/articles/000005520/graphics.html">https://www.intel.cn/content/www/cn/zh/support/articles/000005520/graphics.html</a></p>
+</blockquote>
+<p>上方链接详细讲述了安装intel显卡的方法（可能网上教程更适用于nivida显卡？</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://gaocbsh.github.io">参商</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://gaocbsh.github.io/2025/02/19/linux/system/">http://gaocbsh.github.io/2025/02/19/linux/system/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://gaocbsh.github.io" target="_blank">gaocbsh</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/linux/">linux</a></div><div class="post-share"><div class="social-share" data-image="/img/unhappy.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2025/02/19/hello-world/" title="Hello World"><img class="cover" src="/img/unhappy.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">Hello World</div></div><div class="info-2"><div class="info-item-1">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new &quot;My New Post&quot;  More info: Writing Run server1$ hexo server  More info: Server Generate static files1$ hexo generate  More info: Generating Deploy to remote sites1$ hexo deploy  More info: Deployment </div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2024/12/30/linux/linux%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/" title="linux常用指令.md"><img class="cover" src="/img/unhappy.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-12-30</div><div class="info-item-2">linux常用指令.md</div></div><div class="info-2"><div class="info-item-1">系统源镜像修改系统源镜像设置文件存储为值在/etc/apt/source.list 文件中和/etc/apt/source.list.d/目录下。 进入/etc/apt目录，编辑source.list需要使用sudo指令。执行sudo nano source.list。将不需要的镜像删掉或使用#注释掉。  </div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">参商</div><div class="author-info-description">Go hiking</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">8</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/gaocbsh"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/gaocbsh" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:gaocbsh4794@163.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">于道各努力，千里自同风</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7%E5%87%86%E5%A4%87"><span class="toc-number">1.</span> <span class="toc-text">工具准备</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%B6%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E7%9B%98"><span class="toc-number">2.</span> <span class="toc-text">制作系统启动盘</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA"><span class="toc-number">3.</span> <span class="toc-text">磁盘分区</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E7%B3%BB%E7%BB%9F"><span class="toc-number">4.</span> <span class="toc-text">安装系统</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B0%86%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E5%BC%95%E5%AF%BC%E7%A8%8B%E5%BA%8F%E8%BF%81%E7%A7%BB%E5%88%B0%E7%A7%BB%E5%8A%A8%E7%A1%AC%E7%9B%98%E4%B8%8A"><span class="toc-number">5.</span> <span class="toc-text">将系统启动引导程序迁移到移动硬盘上</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%90%8E%E7%BB%AD%E9%97%AE%E9%A2%98"><span class="toc-number">6.</span> <span class="toc-text">后续问题</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/02/19/linux/system/" title="Linux to go硬盘安装ubuntu双系统实践"><img src="/img/unhappy.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux to go硬盘安装ubuntu双系统实践"/></a><div class="content"><a class="title" href="/2025/02/19/linux/system/" title="Linux to go硬盘安装ubuntu双系统实践">Linux to go硬盘安装ubuntu双系统实践</a><time datetime="2025-02-19T11:26:32.000Z" title="发表于 2025-02-19 19:26:32">2025-02-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/02/19/hello-world/" title="Hello World"><img src="/img/unhappy.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/2025/02/19/hello-world/" title="Hello World">Hello World</a><time datetime="2025-02-19T07:39:37.533Z" title="发表于 2025-02-19 15:39:37">2025-02-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/01/06/coding/linkedList/" title="刷题——链表基础及例题分析"><img src="/img/unhappy.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="刷题——链表基础及例题分析"/></a><div class="content"><a class="title" href="/2025/01/06/coding/linkedList/" title="刷题——链表基础及例题分析">刷题——链表基础及例题分析</a><time datetime="2025-01-06T12:57:28.000Z" title="发表于 2025-01-06 20:57:28">2025-01-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/12/30/coding/array-basic/" title="刷题——数组基础及例题分析"><img src="/img/unhappy.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="刷题——数组基础及例题分析"/></a><div class="content"><a class="title" href="/2024/12/30/coding/array-basic/" title="刷题——数组基础及例题分析">刷题——数组基础及例题分析</a><time datetime="2024-12-30T06:04:32.000Z" title="发表于 2024-12-30 14:04:32">2024-12-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/12/30/linux/linux%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/" title="linux常用指令.md"><img src="/img/unhappy.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="linux常用指令.md"/></a><div class="content"><a class="title" href="/2024/12/30/linux/linux%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/" title="linux常用指令.md">linux常用指令.md</a><time datetime="2024-12-30T05:04:43.000Z" title="发表于 2024-12-30 13:04:43">2024-12-30</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By 参商</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 6.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.3</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
